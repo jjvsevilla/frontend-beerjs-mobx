@@ -1,4 +1,7 @@
-This project was created with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Live demo
+[frontend-beerjs-mobx](https://jjvsevilla.github.io/frontend-beerjs-mobx/)
+
+This project was created with [Create React App](https://github.com/facebookincubator/create-react-app). Also, it uses [MobX](https://github.com/mobxjs/mobx) for state management, and [React Router](https://github.com/ReactTraining/react-router) for app routing.
 
 ## Execute the project
 
