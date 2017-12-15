@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <DevTools />
-        <Header title="FrontEnd!" subtitle="BeerJS" />
+        <Header title="FrontEnd!" subtitle="BeerJS vol.2" />
         <Main />
       </div>
     );

@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, when } from 'mobx';
 import comments from '../data/comments';
 
 class Comment {
@@ -16,6 +16,7 @@ class ChelaComment {
   @observable comments = [];
 
   constructor(chelaId, comments) {
+    this.commentsCombo();
     this.chelaId = chelaId;
     comments.forEach(({ text, user }) => {
       this.comments.push(new Comment(text, user))
@@ -29,10 +30,21 @@ class ChelaComment {
   @action addComment = (text, user) => {
     this.comments.push(new Comment(text, user));
   }
+
+  commentsCombo = () => when(
+    () => {
+      console.log(this.comments.length)
+      return this.comments.length > 10;
+    },
+    () => console.log('too many comments')
+  );
 }
+
 
 class CommentsStore {
   @observable list = [];
+  @observable user = '';
+  @observable comment = '';
 
   constructor() {
     Object.keys(comments).forEach(chelaId => {
@@ -53,6 +65,15 @@ class CommentsStore {
 
   @action getChelaComment(id) {
     return this.findChelaComment(id) || this.initChelaComment(id);
+  }
+
+  @action setInput(name, value) {
+    this[name] = value;
+  }
+
+  @action cleanForm() {
+    this.user = '';
+    this.comment = '';
   }
 }
 

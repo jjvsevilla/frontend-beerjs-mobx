@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-// import CSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 // import './Item.css';
 
 const Card = styled.figure`
@@ -53,7 +52,6 @@ const CardButton = styled.button`
 
 const CardLink = CardButton.withComponent(Link);
 
-
 class Item extends Component {
   onLikeBeer = () => {
     this.props.chela.increase();
@@ -67,6 +65,14 @@ class Item extends Component {
           <Link to={`/view/${chela.id}`}>
             <img src={chela.image} alt={chela.name} />
           </Link>
+          <CSSTransitionGroup
+            transitionName="like"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            <span key={chela.likes} className="likes-animation">{chela.likes}</span>
+          </CSSTransitionGroup>
+
         </ImageWrapper>
         <CardCaption>
           <p>{chela.name}</p>

@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import styled from 'styled-components';
 import CommentsForm from './CommentsForm';
 
-class Comments extends Component {
+const CommentsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
+const Comment = styled.p`
+  padding-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d3d3d3;
+
+  strong {
+    margin-right: 5px
+  }
+`;
+
+class Comments extends Component {
   renderComment = (comment, i) => {
     const { user, text } = comment;
     return (
-      <p key={i} className="comment">
+      <Comment key={i}>
         <strong>{user}: </strong>
         <span>{text}</span>
-      </p>
+      </Comment>
     )
   }
 
   renderComments = () => {
     return (
-      <div className="comments">
+      <CommentsWrapper>
         {this.props.chelaComments.comments.map(this.renderComment)}
-      </div>
+      </CommentsWrapper>
     )
   }
 

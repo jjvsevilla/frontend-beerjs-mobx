@@ -30,7 +30,7 @@ const StyledLink = styled(Link)`
 `
 
 const Logo = styled.img`
-  height: 80%;
+  height: ${props => props.height || '80%'};
   animation: ${spin} infinite 2s linear;
 `
 
@@ -86,6 +86,7 @@ const Header = ({ title = 'React!', subtitle = '' }) => {
           <Title dangerouslySetInnerHTML={{__html: spans}}></Title>
           <Subtitle>{subtitle}</Subtitle>
         </Content>
+        <Logo src={`${process.env.PUBLIC_URL}/mobx.svg`} alt={title} height="60%" />
       </StyledLink>
     </OuterHeader>
   )
