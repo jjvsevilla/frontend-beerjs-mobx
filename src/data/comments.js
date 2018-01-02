@@ -1,90 +1,90 @@
 const comments = {
-  "1": [
-    {
-      "text": "Muy buena chela 😎🍺",
-      "user": "Juan"
+  "pilsen":{
+    "1":{
+      "text":"Muy buena chela 😎🍺",
+      "user":"Juan"
     },
-    {
-      "text": "Para pasarla entre patas 🍻",
-      "user": "Jose"
+    "2":{
+      "text":"Para pasarla entre patas 🍻",
+      "user":"Jose"
     }
-  ],
-  "2": [
-    {
-      "text": "Preciso pal fulvaso 😉⚽⚽⚽🍻🍺😎",
-      "user": "Manuel"
+  },
+  "cristal":{
+    "1":{
+      "text":"Preciso pal fulvaso 😉⚽⚽⚽🍻🍺😎",
+      "user":"Manuel"
     }
-  ],
-  "3": [
-    {
-      "text": "Sabor intenso y muy, muy refrescante 😎",
-      "user": "Jorge"
+  },
+  "cusquena":{
+    "1":{
+      "text":"Sabor intenso y muy, muy refrescante 😎",
+      "user":"Jorge"
     },
-    {
-      "text": "Buen sabor, buen olor, buen color! 😏😏😏🥂🔥",
-      "user": "Isaac"
+    "2":{
+      "text":"Buen sabor, buen olor, buen color! 😏😏😏🥂🔥",
+      "user":"Isaac"
     }
-  ],
-  "4": [
-    {
-      "text": "La cerveza del los Italianos 😁",
-      "user": "Luis"
+  },
+  "peroni":{
+    "1":{
+      "text":"La cerveza del los Italianos 😁",
+      "user":"Luis"
     },
-    {
-      "text": "Una obra de arte 😎🍾",
-      "user": "Marvin"
+    "2":{
+      "text":"Una obra de arte 😎🍾",
+      "user":"Marvin"
     }
-  ],
-  "5": [
-    {
-      "text": "Una bebida milenaria que halaga los sentidos... 😜🍺",
-      "user": "Richard"
+  },
+  "corona":{
+    "1":{
+      "text":"Una bebida milenaria que halaga los sentidos... 😜🍺",
+      "user":"Richard"
     },
-    {
-      "text": "La embajadora Mexicana",
-      "user": "Jose"
+    "2":{
+      "text":"La embajadora Mexicana",
+      "user":"Jose"
     },
-    {
-      "text": "Orgullosamente mexicana",
-      "user": "Nichole"
+    "3":{
+      "text":"Orgullosamente mexicana",
+      "user":"Nichole"
     }
-  ],
-  "7": [
-    {
-      "text": "Budweiser quita la sed 🍺",
-      "user": "Denis"
+  },
+  "budweiser":{
+    "1":{
+      "text":"Budweiser quita la sed 🍺",
+      "user":"Denis"
     },
-    {
-      "text": "La mejor cerveza Norte-Americana 😲",
-      "user": "Carlos"
+    "2":{
+      "text":"La mejor cerveza Norte-Americana 😲",
+      "user":"Carlos"
     }
-  ],
-  "8": [
-    {
-      "text": "Una buena elección para celebrar. 😈🍻🚀",
-      "user": "Gustavo"
+  },
+  "heineken":{
+    "1":{
+      "text":"Una buena elección para celebrar. 😈🍻🚀",
+      "user":"Gustavo"
     },
-    {
-      "text": "El verde amor! 😏😏😏🍾",
-      "user": "Erik"
+    "2":{
+      "text":"El verde amor! 😏😏😏🍾",
+      "user":"Erik"
     }
-  ],
-  "10": [
-    {
-      "text": "Cerveza en copa de champán 😁🍸",
-      "user": "Angela"
+  },
+  "estrella-damm":{
+    "1":{
+      "text":"Cerveza en copa de champán 😁🍸",
+      "user":"Angela"
     },
-    {
-      "text": "Sabor y frescura irrepetible",
-      "user": "Diana"
+    "2":{
+      "text":"Sabor y frescura irrepetible",
+      "user":"Diana"
     }
-  ],
-  "11": [
-    {
-      "text": "Cerveza Löwenbräu, de Münich (Alemania)",
-      "user": "Tom"
+  },
+  "lowenbrau":{
+    "1":{
+      "text":"Cerveza Löwenbräu, de Münich (Alemania)",
+      "user":"Tom"
     }
-  ]
+  }
 };
 
 export default comments;

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-// import './Item.css';
 
 const Card = styled.figure`
   display: inline-block;
@@ -53,12 +52,21 @@ const CardButton = styled.button`
 const CardLink = CardButton.withComponent(Link);
 
 class Item extends Component {
+  componentWillMount() {
+    const { CommentsStore, chela } = this.props;
+    const hasComments = CommentsStore.hasComments(chela.id);
+    if (!hasComments) {
+      CommentsStore.initChelaComment(chela.id);
+    }
+  }
+
   onLikeBeer = () => {
     this.props.chela.increase();
   }
 
   render () {
-    const { chela, comments } = this.props;
+    const { chela, CommentsStore } = this.props;
+    const comments = CommentsStore.getChelaComment(chela.id);
     return (
       <Card>
         <ImageWrapper>
@@ -90,4 +98,4 @@ class Item extends Component {
   }
 }
 
-export default observer(Item);
+export default inject('CommentsStore')(observer(Item));

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
-
 import Item from './Item';
 import Comments from './Comments';
 
 const MainPanel = styled.div`
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -20,6 +19,14 @@ const Panel = styled.div`
 `;
 
 class Viewer extends Component {
+  componentWillMount() {
+    const { match: { params: { chelaId }}, CommentsStore } = this.props;
+    const hasComments = CommentsStore.hasComments(chelaId);
+    if (!hasComments) {
+      CommentsStore.initChelaComment(chelaId);
+    }
+  }
+
   render() {
     const { match: { params: { chelaId }}, ChelasStore, CommentsStore } = this.props;
     const chela = ChelasStore.findChela(chelaId);
@@ -27,7 +34,7 @@ class Viewer extends Component {
     return (
       <MainPanel>
         <Panel left>
-          <Item chela={chela} comments={comments} />
+          <Item chela={chela} />
         </Panel>
         <Panel right>
           <Comments chelaComments={comments} />

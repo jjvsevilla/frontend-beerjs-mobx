@@ -8,6 +8,10 @@ class Chela {
   image;
 
   constructor(id, name, likes, image) {
+    this.setValues(id, name, likes, image);
+  }
+
+  @action setValues(id, name, likes, image) {
     this.id = id;
     this.name = name;
     this.likes = likes;
@@ -27,15 +31,15 @@ class ChelasStore {
   @observable list = [];
 
   constructor() {
-    chelas.forEach(({ id, name, likes, image }) => {
-      this.list.push(new Chela(id, name, likes, image))
-    })
+    Object.keys(chelas).forEach((chelaKey) => {
+      const { name, likes, image } = chelas[chelaKey];
+      this.list.push(new Chela(chelaKey, name, likes, image))
+    });
   }
 
   findChela(id) {
     return this.list.find(chela => chela.id === id);
   }
-
 }
 
 export default ChelasStore;

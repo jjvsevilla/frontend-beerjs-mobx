@@ -22,7 +22,7 @@ class CommentsForm extends Component {
     this.props.CommentsStore.cleanForm();
   }
 
-  handleChange = e => {
+  @action handleChange = e => {
     const { name, value } = e.target;
     this.props.CommentsStore.setInput(name, value);
   }

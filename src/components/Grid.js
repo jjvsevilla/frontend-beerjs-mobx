@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Item from './Item';
 
 const ItemWrapper = styled.div`
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   column-count: 3;
   column-gap: 2rem;
@@ -24,10 +24,10 @@ const ItemWrapper = styled.div`
   }
 `;
 
-const Grid = ({ ChelasStore, CommentsStore }) => (
+const Grid = ({ ChelasStore }) => (
   <ItemWrapper>
-    {ChelasStore.list.map((chela, i) => <Item key={i} chela={chela} comments={CommentsStore.getChelaComment(chela.id)} />)}
+    {ChelasStore.list.map((chela, i) => <Item key={i} chela={chela} />)}
   </ItemWrapper>
 );
 
-export default inject('ChelasStore', 'CommentsStore')(observer(Grid));
+export default inject('ChelasStore')(observer(Grid));

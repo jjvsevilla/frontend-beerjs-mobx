@@ -6,4 +6,6 @@ const store = {
   CommentsStore: new CommentsStore()
 }
 
+window.store = store;
+
 export default store;

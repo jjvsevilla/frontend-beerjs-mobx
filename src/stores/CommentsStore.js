@@ -1,4 +1,4 @@
-import { observable, action, computed, when } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import comments from '../data/comments';
 
 class Comment {
@@ -16,30 +16,29 @@ class ChelaComment {
   @observable comments = [];
 
   constructor(chelaId, comments) {
-    this.commentsCombo();
     this.chelaId = chelaId;
-    comments.forEach(({ text, user }) => {
-      this.comments.push(new Comment(text, user))
-    });
+    this.setComments(comments);
   }
 
   @computed get total() {
     return this.comments.length;
   }
 
+  @action setComments = (comments) => {
+    Object.keys(comments).forEach(commentKey => {
+      const { text, user } = comments[commentKey]
+      this.comments.push(new Comment(text, user))
+    });
+  }
+
+  @action clearComments = () => {
+    this.comments = [];
+  }
+
   @action addComment = (text, user) => {
     this.comments.push(new Comment(text, user));
   }
-
-  commentsCombo = () => when(
-    () => {
-      console.log(this.comments.length)
-      return this.comments.length > 10;
-    },
-    () => console.log('too many comments')
-  );
 }
-
 
 class CommentsStore {
   @observable list = [];
@@ -47,24 +46,24 @@ class CommentsStore {
   @observable comment = '';
 
   constructor() {
-    Object.keys(comments).forEach(chelaId => {
-      const chelaComments = comments[chelaId];
-      this.list.push(new ChelaComment(chelaId, chelaComments));
+    Object.keys(comments).forEach(chelaKey => {
+      const chelaComments = comments[chelaKey];
+      this.list.push(new ChelaComment(chelaKey, chelaComments));
     });
   }
 
-  findChelaComment(id) {
+  getChelaComment(id) {
     return this.list.find(chelaComment => chelaComment.chelaId === id);
+  }
+
+  hasComments(id) {
+    const item = this.list.find(chelaComment => chelaComment.chelaId === id);
+    return !!item;
   }
 
   @action initChelaComment = (chelaId) => {
     const newChelaComment = new ChelaComment(chelaId, []);
     this.list.push(newChelaComment);
-    return newChelaComment;
-  }
-
-  @action getChelaComment(id) {
-    return this.findChelaComment(id) || this.initChelaComment(id);
   }
 
   @action setInput(name, value) {
